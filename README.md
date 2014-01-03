@@ -1,4 +1,4 @@
-acm-checker
+ACM-Checker
 ===========
 
-The website for the ACM course at ENS Lyon
+The website for the ACM course at ENS Lyon.
