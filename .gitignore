@@ -1,3 +1,5 @@
 .DS_Store
 .vagrant
 public
+src/private_config.php
+put_online.py
