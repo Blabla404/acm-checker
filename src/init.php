@@ -1,13 +1,5 @@
 <?php
-include_once('private_config.php');
-
-try{
-   $bdd = new PDO('mysql:host=' . $_dbHost . ';dbname=' . $_dbName, $_dbLogin, $_dbPass);
-}
-catch (Exception $e)
-{
-  die('Erreur : ' . $e->getMessage());
-}
+include_once('connectdb.php');
 
 $bdd->exec('DROP TABLE user');
 $bdd->exec('CREATE TABLE user(id INT AUTO_INCREMENT PRIMARY KEY,pseudo VARCHAR(255), password VARCHAR(255), email VARCHAR(255), admin BOOL, idUva VARCHAR(255))');
