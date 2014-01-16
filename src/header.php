@@ -1,23 +1,21 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
     <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.css" />
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="bootstrap/js/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <link rel="icon" href="favicon.png" />
     <title>ACM-2014</title>
-    
-    <style type="text/css">
-     body { padding-top: 50px; }
-    </style>
+
   </head>
 
   <body>
     <?php include_once("analyticstracking.php") ?>
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
       <ul class="nav navbar-nav">
 	<li> <a class="navbar-brand" href=".">ACM-2014</a> </li>
 	<li> <a href="td.php">TD</a> </li>
@@ -33,9 +31,14 @@
 	  </ul>
 	</li>
       </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-	<li> <a href="partiel.html">Partiel</a> </li>
-	<li> <a href="examen.html">Examen</a> </li>
-      </ul>
+
+      <div class="navbar-right">
+	<?php if(isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){ ?>
+	<a href="me.php" class="navbar-link"><?php echo htmlspecialchars($_SESSION['pseudo']); ?></a>
+	<a href="logout.php"><button type="button" class="btn btn-default navbar-btn">Logout</button></a>
+	<?php } else{?>
+	<a href="signin.php"><button type="button" class="btn btn-default navbar-btn">Sign in</button></a>
+	<a href="signup.php"><button type="button" class="btn btn-default navbar-btn">Sign up</button></a>
+	<?php } ?>
+      </div>
     </nav>
