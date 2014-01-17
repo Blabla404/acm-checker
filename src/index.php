@@ -39,8 +39,8 @@ participent à l’ENS Lyon.</li>
 <p>Ce module encadré par
 <a href="http://perso.ens-lyon.fr/vincent.lanore/">Vincent Lanore</a>,
 <a href="http://perso.ens-lyon.fr/arnaud.lefray/">Arnaud Lefray</a>,
-<a href="http://perso.ens-lyon.fr/petru.valicov/">Petru Valicov</a> et
-<a href="http://perso.ens-lyon.fr/theophile.trunck/">Théophile Trunck</a>
+<a href="http://perso.ens-lyon.fr/theophile.trunck/">Théophile Trunck</a> et
+<a href="http://perso.ens-lyon.fr/petru.valicov/">Petru Valicov</a>
 aura lieu en salle E001 les mercredi de 15h45 à 18h45.</p>
 
 <h1>Organisation du cours</h1>
@@ -49,7 +49,7 @@ aura lieu en salle E001 les mercredi de 15h45 à 18h45.</p>
 cela il faudra trouver l'algorithme, le coder et le valider contre en
 jeu de donnée en temps limité (il doit fournir exactement la sortie
 attendue en un temps limité). Les codes résolvant ces problèmes seront
-à envoyer (avec l'objet [ACM]) à vos TD-Men avant le dimanche de la
+à envoyer (avec l'objet **[ACM]**) à vos TD-Men avant le dimanche de la
 semaine suivant le TD (par exemple avant le 09/02/2014 pour le premier
 TD). Le code de chaque problème devra être contenu dans un unique
 fichier nommé suivant la convention <em>numéro_du_problème-login</em>
