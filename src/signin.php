@@ -2,11 +2,13 @@
 include('header.php');
 include_once('connectdb.php');
 
+require('lib/password.php');
+
 if(isset($_POST['pseudo']) AND isset($_POST['pass'])){
-  $req = $bdd->prepare('SELECT id, pseudo FROM user WHERE pseudo = ? AND password = ? ');
-  $req->execute(array($_POST['pseudo'], sha1($_POST['pass'])));
+  $req = $bdd->prepare('SELECT id, pseudo, password FROM user WHERE pseudo = ?');
+  $req->execute(array($_POST['pseudo']));
   $res = $req->fetch();
-  if($res){
+  if($res AND password_verify($_POST['pass'], $res['password'])){
     $_SESSION['id'] = $res['id'];
     $_SESSION['pseudo'] = $res['pseudo'];
     header('Location: index.php'); 
@@ -29,7 +31,7 @@ if(isset($_POST['pseudo']) AND isset($_POST['pass'])){
   </div>
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-10">
-      <button type="submit" class="btn btn-default">Sign up</button>
+      <button type="submit" class="btn btn-default">Sign in</button>
     </div>
   </div>
 </form>
