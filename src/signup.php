@@ -2,6 +2,8 @@
 include('header.php');
 include_once('connectdb.php');
 
+require('lib/password.php');
+
 if(isset($_POST['pseudo']) OR isset($_POST['pass']) OR 
    isset($_POST['passCheck']) OR isset($_POST['email']) OR
    isset($_POST['idUva'])){
@@ -24,7 +26,7 @@ if($okPseudo AND $okPass AND $okMail AND $okIdUva){
 VALUES( :pseudo, :password, :email, 0, :idUva)');
 $req->execute(array(
   'pseudo' => $_POST['pseudo'],
-  'password' => sha1($_POST['pass']),
+  'password' => password_hash($_POST['pass'], PASSWORD_DEFAULT),
   'email' => $_POST['email'],
   'idUva' => $_POST['idUva']
 ));
