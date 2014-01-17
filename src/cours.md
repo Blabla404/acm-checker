@@ -1,12 +1,13 @@
-#Entree sortie
+#Workflow
 
-il a plusieurs façon de faire:
+~~~ cpp
+#include<iostream>
 
-* cin
-* printf
+using namespace std;
+		
+int main(){
 
-#Un autre titre 1
+}
+~~~
 
-#Un autre titre 2
-
-#Un autre titre 3
+#Entrée Sortie
