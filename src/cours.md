@@ -53,9 +53,10 @@ Quelques remarques sur ce code:
   problème.
 
 Il faut ensuite compiler ce programme. À l'école le compilateur est
-`g++`. Il est fortement conseiller d'*activer les warnings*, vous
-compilez donc avec `g++ -Wall -Wextra hello.cpp` qui vous produit un
-executable `a.out`.
+`g++`. Il est fortement conseiller d'*activer les warnings* et on va
+également utiliser certaines extensions de C++11 vous compilez donc
+avec `g++ -Wall -Wextra -std=c++11 hello.cpp` qui vous produit un executable
+`a.out`.
 
 Vous pouvez maintenant tester votre programme. Comme il lit sur
 l'entrée standard il faut rediriger le contenu de votre fichier
@@ -75,21 +76,204 @@ Enfin votre programme doit s'executer assez rapidement, si vous avez
 un jeu de données sensiblement de même taille que celui attendu vous
 pouvez regarder le temps que mets votre programme à traiter ce jeu de
 données. Pour cela compilez avec les optimisations `g++ -O2 -Wall
--Wextra hello.cpp`, puis vous pouvez utiliser
+-Wextra -std=c++11 hello.cpp`, puis vous pouvez utiliser
 `time ./a.out < hello.in > hello.out`. Si votre programme est trop
 lent vous pouvez le stopper en faisant `Ctrl + c`.
 
 #Entrée Sortie
 
+Dans chaque problème il faudra lire sur l'entrée standard et écrire
+sur la sortie standard. Certain problème ne sont pas spécialement
+pensé pour facilité la lecture d'entrée, heureusement C++ dispose de
+plusieurs fonction qui vous faciliterons la partie entrée sortie. Nous
+vous conseillons fortement d'utiliser les fonctions `cin/cout` du C++
+plutot que `scanf/printf` de C.
+
 ##Généralitées
+
+ Les fonctions les plus utilisées seront `>>` et `<<`. `getline` pourra
+ parfois nous être utile. Il est possible de mettre `>>` et `getline`
+ dans une la condition d'une boucle `while` pour lire entièrement un
+ flux de taille arbitraire.
+
+Dans les cas simples et fréquents, `>>` lit un stream et interprète les
+données. Il saute les caractères blancs et s'arrête à la fin du
+flux. Attention la position dans le flux est juste après le mot lu.
+
+`getline` lit une ligne entière. Attention en le combinant avec `<<` on
+peut facilement lire uniquement le caractère de retour de ligne au
+lieu de la ligne suivante. Dans ce cas on peut utiliser `ignore` pour
+extraire sans traiter un caractère.
+
+Voici un exemple sur ce fichier d'entrée. (3.23e3 est le nombre 3230
+en notation scientifique)
+
+~~~
+12      3.23e3
+
+Coucou@&#.       p
+Paf c
+c
+Hello
+World !
+~~~
+
+
+
+~~~ cpp
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int main(){
+int n;
+double d;
+string s;
+char c;
+cin >> n >> d >> s >> c;
+//n=12, d=3230, s=Coucou@&#., c=p
+cin.ignore();
+getline(cin, s);
+cin >> c;
+//s="Paf c";
+//c='c'
+getline(cin, s);
+//s="\n"
+cin >> s;
+//s=="Hello"
+cin.ignore();
+getline(cin, s);
+//s="World !"
+}
+~~~
 
 ##Lire caractère par caractère
 
+Par défaut `cin` saute les caractère blanc (espace tabulation et
+retour de ligne), si vous voulez vraiment lire caractère par caractère
+il faut passer le manipulateur `noskipws`. Pour revenir dans l'état
+normal il faut ensuite passer le manipulateur `skipws`. Voici un exemple:
+
+~~~ cpp
+#include<iostream>
+#include<sstream>
+
+using namespace std;
+
+int main(){
+  char a, b, c;
+
+  {	
+  istringstream iss ("  123");
+  iss >> skipws >> a >> b >> c;
+  cout << a << b << c << '\n';
+  }
+  {
+  istringstream iss ("  123");
+  iss >> noskipws >> a >> b >> c;
+  cout << a << b << c << '\n';
+  }
+}
+~~~
+
+qui affiche
+
+~~~
+123
+  1
+~~~
+
 ##Parser une lignes contenant un nombre arbitraire d'entier
+
+Nous avons vu qu'il était facile traiter un fichier avec un nombre
+arbitraire de ligne. Voyons comme adapter ceci pour traiter une ligne
+avec un nombre arbitraire d'entier à trairer.
+
+Tout allons lire toute la ligne d'un coup avec `getline`, et
+transformer la chaine obtenue en flux afin de pouvoir utiliser la même
+méthode que pour lire le fichier.
+
+~~~ cpp
+#include<iostream>
+#include<string>
+#include<sstream>
+
+using namespace std;
+
+int main(){
+	string s;
+	//commençons par lire la ligne
+	getline(cin, s);
+	//transformons ensuite notre chaine de caractere en un flux de lecture
+	istringstream ss(s);
+	//nous pouvons maintenant utiliser ss comme cin
+	int tmp;
+	while(ss >> tmp)
+		cout << tmp;
+}
+~~~
 
 ##Afficher exactement 6 chiffres après la virgule
 
+Rien de compliqué mais il faut le savoir, le manipulateur
+`setprecision(n)` permet d'afficher les nombres à virugle avec une
+précision de `n`. Le manipulateur `fixed` permet lui de forcer
+l'affichage des 0 non significatif.
+
+~~~ cpp
+#include<iostream>
+#include<iomanip>
+
+using namespace std;
+
+int main(){
+	double a=1.2, b=1.23456789123456789;
+	cout << a << ' ' << b << '\n';
+	cout << fixed << setprecision(6) << a << ' ' << b << '\n';
+}
+~~~
+
+affiche
+
+~~~
+1.2 1.23457
+1.200000 1.234568
+~~~
+
 ##Mes entrées sorties sont trop lentes
+
+C'est un problème assez délicat qui dépend pas mal de la plateforme
+(cygwin sous windows est extremement mauvais par exemple), mais en
+général il est dit que `scanf/printf` sont plus rapide que
+`cin/cout`. En fait par défaut `cin/cout` sont synchroniser sur
+`scanf/printf` ce qui explique leur lenteur. Si vous n'utilisez pas
+`scanf/printf` cette synchronisation est inutile vous pouvez la
+désactiver. De plus votre programme étant testé en mode non
+interactif, vous n'avez pas non plus besoin de la syncronisation entre
+`cin` et `cout`. Sans cette syncronisation (et ça dépend des
+plateformes et du compilateur) `cin/cout` sont globalement aussi
+rapide que `scanf/printf`. Notez que cette optimisation n'est utile
+que lorsque les entrées sorties ne sont pas négligeable devant la
+complexité de votre algorithme (i.e. votre algo est au pire en O(n
+ln(n))).
+
+Pour désactiver ces synchronisation il suffit d'utiliser
+`sync_with_stdio` et `.tin`, voici un exemple.
+
+~~~ cpp
+#include<iostream>
+
+using namespace std;
+
+int main(){
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int tmp;
+	while(cin >> tmp)
+		cout << tmp << '\n';
+}
+~~~
 
 #Nombres
 
@@ -154,9 +338,8 @@ Voici un exemple simple d'utilisation.
 using namespace std;
 
 int main(){
-	//crée un tableau t de 5 entiers initialisés à la valauer par défaut
-	//i.e. 0
-	vector<int> t(5);
+	//crée un tableau t de 5 entiers (1,2,3,4,5)
+	vector<int> t{1,2,3,4,5};
 	//crée un tableau d de 12 flotants initialisés à 3.14
 	vector<double> d(12,3.14);
 
@@ -174,12 +357,12 @@ int main(){
 		cout << p[i] << ' ';
 	cout << '\n';
 
-	sort(p.begin(), p.end());
+	sort(begin(p), end(p));
 	//p est maintenant de taille 2 et contient 'a' puis 'z';
 
 	//une autre manière d'afficher le tableau p
-	for(vector<char>::iterator it=p.begin();it!=p.end();++it)
-		cout << *it << ' ';
+	for(char c:p)
+		cout << c << ' ';
 	cout << '\n';
 }
 ~~~
@@ -223,8 +406,12 @@ int main(){
   cout << "mymap['c'] is " << mymap['c'] << '\n';
   cout << "mymap['d'] is " << mymap['d'] << '\n';
 
-  for(map<char,string>::iterator it=mymap.begin();it!=mymap.end();++it)
-    cout << "key: " << it->first << ", value: " << it->second << '\n';
+  //version pre c++11
+  //for(map<char,string>::iterator it=mymap.begin();it!=mymap.end();++it)
+  //  cout << "key: " << it->first << ", value: " << it->second << '\n';
+
+  for(auto& x:mymap)
+	cout << "key: " << x.first << ", value: " << x.second << '\n';
 
 }
 ~~~
@@ -243,3 +430,71 @@ key: d, value:
 ~~~
 
 #Mes propres structures de données
+
+Supposons que vous vouliez une structure de donnée pour représenter un
+cercle. Vous voulez également pouvoir utiliser des vector<cercle>
+ainsi que d'autre conteneur de cercles. Il faut pour cela créer votre
+propre structure de donnée. Le mot clé est struct et il faut également
+définir un constructeur (une fonction membre sans type de retour du
+même nom que votre struct). Attention il y a un ; à la fin de la
+déclaration. Voici un exemple:
+
+~~~ cpp
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+struct mycercle{
+  int x,y,r; 
+
+ //notez le c=0, qui rend le troisième paramètre optionel
+ //s'il n'est pas spécifié ce sera 1
+ mycercle(int a, int b, int c=1){
+    x=a;
+    y=b;
+    r=c;
+  }
+  
+
+  //Une déclaration équivalente
+  //mycercle(int a, int b, int c=1):x(a),y(b),r(c){}
+
+  //on peut aussi spécifier une operateur de comparaison afin
+  // utiliser les algorithmes de la STL
+
+  //que ce passe t'il si je compare mon cercle avec un autre cercle c
+  //noter les const qui permettent de s'assurer qu'aucun cercle ne sera
+  //maltra..modifié durant la comparaison
+  //ici un cercle est plus petit qu'un autre s'il a plus petit rayon.
+  bool operator<(const mycercle& c) const{
+    return r<c.r;
+  }
+
+};
+
+//le mot clé const permet de s'assurer que c ne sera pas modifié
+//le & permet de passer c par référence
+void affiche(const mycercle& c){
+  cout << "Le cercle a pour centre " << c.x << ','
+       << c.y << " et pour rayon " << c.r << endl;
+} 
+
+int main(){
+  mycercle C1(0,0,2);
+  affiche(C1);
+//Le cercle a pour centre 0,0 et pour rayon 2
+  mycercle C2(2,7);
+  affiche(C2);
+//Le cercle a pour centre 2,7 et pour rayon 0
+  vector<mycercle> t1;
+  //vector<mycercle> t2(5);
+  //Ne fonctionne pas car il n'y a pas de constructeur par défaut
+  //il faut au choix donner des valeurs par défaut à tous les paramètres
+  //du constructeur ou faire un constructeur sans paramètre
+
+  vector<mycercle> t3{mycercle{1,2,3}, mycercle{4,5,6}};
+  sort(begin(t3), end(t3));
+}
+~~~
