@@ -4,7 +4,7 @@
 <p> L’écriture d’un programme est souvent l’objet d’un compromis entre
 son temps d’exécution (efficacité algorithmique de la solution codée)
 et son temps de développement (réflexion, implantation et
-débuggage). Deux attitudes caricaturales sont : </p>
+débuguage). Deux attitudes caricaturales sont : </p>
  <ul>
    <li>rechercher la solution la plus efficace théoriquement
 (c.-à-d. quand n temps vers l’infini) même si elle est très compliquée
@@ -28,7 +28,7 @@ jeux de données.  </p>
 <li>Mieux comprendre comment se comportent en pratique les algorithmes
 classiques (de graphes, arithmétique, géométrie…)</li>
 <li>S’exercer à écrire des programmes rapidement, mais surtout éviter
-au maximum d’avoir à déboguer (notamment en écrivant d’abord un
+au maximum d’avoir à débuguer (notamment en écrivant d’abord un
 pseudo-code)</li>
 <li>Enfin, pour ceux qui le souhaitent, se préparer au concours de
 programmation ACM-ICPC. La première étape de ce concours a lieu chaque
@@ -41,12 +41,12 @@ participent à l’ENS Lyon.</li>
 <a href="http://perso.ens-lyon.fr/arnaud.lefray/">Arnaud Lefray</a>,
 <a href="http://perso.ens-lyon.fr/theophile.trunck/">Théophile Trunck</a> et
 <a href="http://perso.ens-lyon.fr/petru.valicov/">Petru Valicov</a>
-aura lieu en salle E001 les mercredi de 15h45 à 18h45.</p>
+aura lieu en salle E001 les mercredis de 15h45 à 18h45.</p>
 
 <h1>Organisation du cours</h1>
 
-<p>Chaque semaine vous aurez en ensemble de problèmes à résoudre. Pour
-cela il faudra trouver l'algorithme, le coder et le valider contre en
+<p>Chaque semaine vous aurez un ensemble de problèmes à résoudre. Pour
+cela il faudra trouver l'algorithme, le coder et le valider contre un
 jeu de donnée en temps limité (il doit fournir exactement la sortie
 attendue en un temps limité). Les codes résolvant ces problèmes seront
 à envoyer (avec l'objet **[ACM]**) à vos TD-Men avant le dimanche de la
@@ -64,7 +64,7 @@ sera une pondération de ces trois notes (a priori
 <p> Même si le concours ACM a lieu en équipe ce cours sera
 individuel. Chacun est donc tenu de rendre ses propres
 problèmes. Toutefois quelques TD (et peut-être le partiel) auront lieu
-en équipe. </p>
+en équipes.</p>
 
 <h1>Pour démarrer</h1>
 
@@ -94,8 +94,8 @@ en équipe. </p>
   tableau.</li>
 <li>Les <a
 href="https://drive.google.com/folderview?id=0B5MTqWB_E_MxZktYZmJjTFl0LWs&usp=sharing">Testcases</a>
-sont un dossier ou vous trouverez pour certains problèmes un jeu de
-donné avec la sortie attendue. C'est une bonne façon de trouver le cas
+sont un dossier où vous trouverez pour certains problèmes un jeu de
+données avec la sortie attendue. C'est une bonne façon de trouver le cas
 qui ne marche pas dans votre algorithme</li> </ul>
 
 <?php include 'footer.php'; ?>
