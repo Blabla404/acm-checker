@@ -10,5 +10,5 @@ ln -fs /vagrant/conf/www.conf /etc/php5/fpm/pool.d/www.conf
 echo "mysql-server-5.5 mysql-server/root_password_again password root" | debconf-set-selections
 echo "mysql-server-5.5 mysql-server/root_password password root" | debconf-set-selections
 apt-get -y install mysql-server
-mysql --user=root --password=root mysql < /vagrant/start.sql
+mysql --user=root --password=root mysql < /vagrant/conf/start.sql
 service php5-fpm restart && service nginx restart

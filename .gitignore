@@ -1,9 +1,5 @@
 .DS_Store
 .vagrant
-public/*.php
-public/*.html
-public/bootstrap
-src/private_config.php
+private_config.php
 put_online.py
 start.sql
-*.png
