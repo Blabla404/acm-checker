@@ -16,6 +16,11 @@ while($data = $res->fetch()){
   echo('<br/>');
 }
 
+$res = $bdd->query('SELECT * FROM submission');
+while($data = $res->fetch()){
+  print_r($data);
+  echo('<br/>');
+}
+
 include('footer.php');
 ?>
-
