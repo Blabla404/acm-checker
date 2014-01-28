@@ -1,6 +1,6 @@
 <?php include 'header.php'; ?>
 
-<h1>Présentation du cours</h1> 
+<h1>Présentation du cours</h1>
 <p> L’écriture d’un programme est souvent l’objet d’un compromis entre
 son temps d’exécution (efficacité algorithmique de la solution codée)
 et son temps de développement (réflexion, implantation et
@@ -92,9 +92,7 @@ en équipes.</p>
   le problème requiert des <code>long long</code> au lieu de simple
   <code>int</code>, s'il vous plait ajoutez une remarque dans le
   tableau.</li>
-<li>Les <a
-href="https://drive.google.com/folderview?id=0B5MTqWB_E_MxZktYZmJjTFl0LWs&amp;usp=sharing">Testcases</a>
-sont un dossier où vous trouverez pour certains problèmes un jeu de
+<li>Les <a href="https://drive.google.com/folderview?id=0B5MTqWB_E_MxZktYZmJjTFl0LWs&amp;usp=sharing">Testcases</a> sont un dossier où vous trouverez pour certains problèmes un jeu de
 données avec la sortie attendue. C'est une bonne façon de trouver le cas
 qui ne marche pas dans votre algorithme</li> </ul>
 
