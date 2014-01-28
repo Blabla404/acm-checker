@@ -2,10 +2,15 @@
 include_once('connectdb.php');
 
 function generate($nbTD){
-  echo('<p>Voici les problèmes de la semaine:</p>');
-  echo('<ul>');
-
   global $bdd;
+
+  $req = $bdd->prepare('SELECT dueDate FROM td WHERE id = ?');
+  $req->execute(array($nbTD));
+  $dueDate = $req->fetch();
+  $dueDate = $dueDate['dueDate'];
+
+  echo('<p>Ci-dessous les problèmes de la semaine, à rendre avant le <strong>' . $dueDate. '</strong>. Et voici le <a href="scoreboard.php?td='. $nbTD .'">scoreboard</a> de la semaine.</p>');
+  echo('<ul>');
 
   $req = $bdd->prepare('SELECT * FROM problem WHERE idTD = ? AND NOT bonus');
   $req->execute(array($nbTD));
