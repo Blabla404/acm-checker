@@ -20,6 +20,7 @@ $bdd->exec('INSERT INTO problem VALUES ("", "12550", "http://uva.onlinejudge.org
 
 $bdd->exec('DROP TABLE td');
 $bdd->exec('CREATE TABLE td(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255), dueDate DATE)');
+$bdd->exec('INSERT INTO td VALUES ("", "TD01", "2014-02-09")');
 
 $bdd->exec('DROP TABLE submission');
 $bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATE, valid BOOL)');
