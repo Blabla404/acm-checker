@@ -23,7 +23,13 @@ $res = $bdd->query($sql);
 while($data = $res->fetch())
   $problems[] = $data;
 
+if(file_exists('last_update.txt')){
+  $date = file_get_contents('last_update.txt');
+  echo('<p>Dernière mise à jour: ' . $date . '</p>');
+}
+
 ?>
+
 <table class="table table-bordered">
 <tr>
   <th></th>

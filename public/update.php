@@ -86,4 +86,9 @@ function uvaGet($call){
 $call = uvaCall();
 uvaGet($call);
 
+date_default_timezone_set('Europe/Paris');
+$date = date('H:i:s d/m/Y');
+$handle = fopen('last_update.txt', 'wb');
+fwrite($handle, $date);
+fclose($handle);
 ?>
