@@ -3,3 +3,6 @@
 private_config.php
 put_online.py
 start.sql
+public/problem.json
+public/cours.html
+public/last_update.txt
