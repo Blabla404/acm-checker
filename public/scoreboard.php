@@ -40,9 +40,14 @@ if(file_exists('last_update.txt')){
 <table class="table table-bordered">
 <tr>
   <th></th>
-  <?php foreach($problems as $problem)
-  echo('<th> <a href="'. $problem['url'].'">'. $problem['title'] .'</a><br/> (' . $problem['dueDate']. ")</th>\n");
-  ?>
+  <?php foreach($problems as $problem){
+    echo('<th> <a href="'. $problem['url'].'">'. $problem['title'] .'</a><br/>');
+    if($problem['bonus'])
+      echo('(Bonus)');
+    else
+      echo('(' . $problem['dueDate']. ')');
+    echo("</th>\n");
+}?>
 </tr>
 
 <?php
@@ -53,7 +58,7 @@ foreach($users as $user){
   foreach($problems as $problem){
     if(!isset($valid[$user['id']][$problem['id']]))
       echo("<td class=\"danger\">TODO</td>\n");
-    else if($valid[$user['id']][$problem['id']]<=$problem['dueDate'])
+    else if($valid[$user['id']][$problem['id']]<=$problem['dueDate'] || $problem['bonus'])
     echo("<td class=\"success\">DONE</td>\n");
     else
       echo("<td class=\"warning\">LATE</td>\n");
