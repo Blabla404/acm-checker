@@ -16,7 +16,7 @@ return $id2Title;
 function uvaId2User(){
   global $bdd;
   $id2User = array();
-  $res = $bdd->query('SELECT id,idUva FROM user');
+  $res = $bdd->query('SELECT id,idUva FROM user WHERE idUva<>""');
   while($data = $res->fetch())
     $id2User[$data['idUva']] = $data['id'];
   return $id2User;
@@ -35,7 +35,8 @@ function uvaCall(){
   global $bdd;
   $call = "http://uhunt.felix-halim.net/api/subs-nums/";
 
-  $res = $bdd->query('SELECT idUva FROM user');
+  $res = $bdd->query(
+'SELECT idUva FROM user WHERE idUva<>""');
   $data = $res->fetchAll(PDO::FETCH_COLUMN, 0);
   $call .= join(',', $data);
 
