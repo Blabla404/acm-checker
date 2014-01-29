@@ -7,7 +7,14 @@ while($data = $res->fetch())
   $valid[$data['idUser']][$data['idProblem']] = $data['date'];
 
 $users = array();
-$res = $bdd->query('SELECT id, pseudo FROM user WHERE admin=FALSE');
+$res = $bdd->query(
+'SELECT user.id, user.pseudo
+FROM user LEFT JOIN (SELECT * FROM submission WHERE valid=TRUE) submission ON(user.id=submission.idUser)
+WHERE admin=FALSE
+GROUP BY user.id
+ORDER BY COUNT(submission.id) DESC
+'
+);
 while($data = $res->fetch())
   $users[] = $data;
 
