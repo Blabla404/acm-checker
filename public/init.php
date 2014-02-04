@@ -34,7 +34,7 @@ $bdd->exec('INSERT INTO td VALUES ("", "TD01", "2014-02-09")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD02", "2014-02-16")');
 
 //$bdd->exec('DROP TABLE submission');
-//$bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATE, valid BOOL)');
+//$bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATETIME, valid BOOL)');
 
 
 header('Location: index.php');
