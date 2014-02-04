@@ -12,7 +12,7 @@ $res = $bdd->query(
 FROM user LEFT JOIN (SELECT * FROM submission WHERE valid=TRUE) submission ON(user.id=submission.idUser)
 WHERE admin=FALSE
 GROUP BY user.id
-ORDER BY COUNT(submission.id) DESC
+ORDER BY COUNT(submission.id) DESC, MAX(submission.date)
 '
 );
 while($data = $res->fetch())
@@ -20,11 +20,14 @@ while($data = $res->fetch())
 
 $problems = array();
 $sql = 'SELECT problem.id, problem.title, problem.url, problem.bonus, td.dueDate
-FROM problem JOIN td ON (problem.idTD = td.id)';
+FROM problem JOIN td ON (problem.idTD = td.id)
+';
 
 
 if(isset($_GET['td']) && is_numeric($_GET['td']))
   $sql .= ' WHERE td.id='.$_GET['td'];
+
+$sql .+ 'ORDER BY td.dueDate, problem.bonus, problem.id';
 
 $res = $bdd->query($sql);
 while($data = $res->fetch())
