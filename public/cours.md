@@ -35,7 +35,7 @@ Nous pouvons maintenant commencer à coder dans un fichier `hello.cpp`:
 #include<string>
 
 using namespace std;
-		
+
 int main(){
 	string s;
 	while(cin >> s)
@@ -164,7 +164,7 @@ using namespace std;
 int main(){
   char a, b, c;
 
-  {	
+  {
   istringstream iss ("  123");
   iss >> skipws >> a >> b >> c;
   cout << a << b << c << '\n';
@@ -422,11 +422,11 @@ qui affiche:
 mymap['a'] is an element
 mymap['b'] is another element
 mymap['c'] is another element
-mymap['d'] is 
+mymap['d'] is
 key: a, value: an element
 key: b, value: another element
 key: c, value: another element
-key: d, value: 
+key: d, value:
 ~~~
 
 #Mes propres structures de données
@@ -447,7 +447,7 @@ déclaration. Voici un exemple:
 using namespace std;
 
 struct mycercle{
-  int x,y,r; 
+  int x,y,r;
 
  //notez le c=1, qui rend le troisième paramètre optionnel
  //s'il n'est pas spécifié ce sera 1
@@ -456,7 +456,7 @@ struct mycercle{
     y=b;
     r=c;
   }
-  
+
 
   //Une déclaration équivalente
   //mycercle(int a, int b, int c=1):x(a),y(b),r(c){}
@@ -479,7 +479,7 @@ struct mycercle{
 void affiche(const mycercle& c){
   cout << "Le cercle a pour centre " << c.x << ','
        << c.y << " et pour rayon " << c.r <<'\n';
-} 
+}
 
 int main(){
   mycercle C1(0,0,2);
@@ -496,5 +496,188 @@ int main(){
 
   vector<mycercle> t3{mycercle{1,2,3}, mycercle{4,5,6}};
   sort(begin(t3), end(t3));
+}
+~~~
+
+#Plus longue sous suite croissante
+
+Le but de cet algorithme est de calculer une plus longue sous suite
+croissante d'une chaine `x` donnée en entrée.
+
+La première idée est de calculer la plus longue sous suite commune à
+`x` et à `sort(begin(x), end(x))`. On peut faire cela avec une
+programmation dynamique où `t[i][j]` est la taille de la plus longue
+sous suite commune entre les `i` premier nombre de `x` et les `j`
+premier de `sort(begin(x), end(x))`. Il n'y a rien de très compliqué
+mais l'algorithme final est en _O(n^2^)_. Voyons comment résoudre ce
+problème en _O(n ln(n))_.
+
+Pour résoudre ce problème nous allons utiliser un tableau `m` tel que
+`m[i]` contient l'indice du plus petit entier qui termine une LIS de
+taille `i+1`. (le +1 n'est là que car les tableaux sont numeroté à
+partir de 0). La taille de la plus grande LIS est donc la taille du
+tableau `m`.
+
+On lit la séquence `x` dans l'ordre et on met à jour `m`. Cet algo est
+simple à coder et fonctionne en temps _O(n^2^)_, en effet pour mettre
+à jour `m` on doit parcourir tout le tableau `m` et trouver l'indice
+`i` tels que `m[i]<curr<m[i+1]`. Le point clé pour accélerer cet algo
+est de remarquer que le tableau `m` est trié. En effet si on a une LIS
+de taille `k` finissant par `n`, on a également une LIS de taille
+`k-1` finissant par `n`. On peut donc trouver l'indice de mise à jour
+du tableau `m` en temps logarithmique.
+
+Voici un exemple de code pour ce problème:
+
+~~~
+//Calcule une plus longue sous suite strictement croissante de x
+//et place le resultat dans b.
+//Attention b doit etre un vecteur vide !
+void LIS(const vector<int> &x, vector<int> &b){
+  if(x.empty()) return;
+
+  //tableau des predecesseurs pour la reconstruction
+  vector<int> p(x.size());
+  vector<int> m(1,0);
+
+  for(int i=1;i<int(x.size());++i){
+
+    //si x[i] augmente la LIS courante
+    if(x[i]>x[m.back()]){
+      p[i]=m.back();
+      m.push_back(i);
+      continue;
+    }
+    //sinon recherche dichotomique
+    int lo=0, hi=m.size()-1;
+    while(lo!=hi){
+      int mid=(lo+hi)/2;
+      if(x[m[mid]]<x[i]) lo=mid+1;
+      else hi=mid;
+    }
+    //mise a jour du predecesseur
+    p[i]=m[lo-1];
+    //et si besoin de la LIS que fini x[i]
+    if(x[i]<x[m[lo]])
+      m[lo]=i;
+  }
+
+  //creation de la solution
+  int curr=m.back();
+  int i=m.size();
+  while(i--){
+    b.push_back(x[curr]);
+    curr=p[curr];
+  }
+
+  reverse(b.begin(), b.end());
+}
+~~~
+
+#Génération exhaustive
+
+Parfois la seule solution à un problème est de tester toutes les
+solutions possible. Voyons trois types de choses que l'on peut générer
+et comment faire.
+
+##Sous ensemble
+Pour générer tous (_2^n^_) les sous ensembles, d'un ensemble on peut
+utiliser le codage binaire d'un entier pour représenter les élements
+choisi du sous-ensemble. Si le i^ème^ bit est à `1` on prend le i^ème^
+élément dans le sous ensemble. Pour ce genre de code il est bon de
+connaitre les opérations bit à bit.
+
+En voici certaines: `~` fait le "non" bit à bit, `|` le "ou", `&` le
+"et" et `^` le "xor".
+Il y a également les opérateurs de décalage. `n<<i` décale les bits de
+`n` de `i` cran vers la gauche, `n>>i` les décale vers la droite.
+Pour calculer _2^n^_ on peut par exemple faire `1<<n`.
+
+Voici un exemple de code pour générer les sous ensembles.
+
+~~~
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int main(){
+  vector<int> t{1,2,3};
+  int n=t.size();
+  for(int i=0;i<(1<<n);++i){
+    for(int j=0;j<n;++j)
+      if((i>>j)&1)
+	cout << t[j] << ' ';
+	cout << '\n';
+  }
+}
+~~~
+
+##Sous ensemble de taille k
+
+En utilisant la même idée de représentation d'ensemble par des bits,
+on peut générer les sous-ensembles de taille exactement `k`.
+Un hack connu du à Gosper permet de calculer le prochain sous-ensemble
+en temps constant, le code est assez cryptique mais c'est bon de
+savoir qu'il existe.
+
+~~~
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int main(){
+  vector<int> t{1,2,3,4,5};
+  int n=t.size();
+  int k=3;
+
+  int set = (1 << k) - 1;
+  while (set < (1<<n)) {
+    for(int j=0;j<n;++j)
+      if((set>>j)&1)
+	cout << t[j] << ' ';
+    cout << '\n';
+
+    // Gosper's hack:
+    int c = set & -set;
+    int r = set + c;
+    set = (((r^set) >> 2) / c) | r;
+  }
+}
+~~~
+
+##Permutation
+
+Une autre génération possible est celle de toutes les permutations. Un
+algorithme existe pour en temps linéaire mais amorti constant calculer
+la permutation suivante dans l'ordre lexicographique. Cet algorithme
+est dans la librairie standard sous le nom `next_permutation`. Il agit
+sur un conteneur et le modifie.
+
+Avant de voir un exemple d'utilisation, quelques remarques. Il permet
+de générer les permutation dans l'ordre lexicographique donc si vais
+faites une boucle `do while` sur un tableau non trié, il n'affichera
+pas les première permutation. De même si votre tableau comporte des
+doublons, vous aurez moins de _n!_ permutations.
+
+~~~
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int main(){
+  vector<int> t{1,2,3};
+
+  sort(begin(t), end(t));
+  do{
+    for(int x:t)
+      cout << x << ' ';
+    cout << '\n';
+  }while(next_permutation(begin(t), end(t)));
 }
 ~~~

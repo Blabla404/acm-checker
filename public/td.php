@@ -42,4 +42,21 @@ Ce TD est surtout une introduction. Nous allons voir un workflow pour
 generate(1);
 ?>
 
+<h1>TD 02</h1>
+<p>
+Aujourd'hui nous allons voir comment calculer la plus longue sous
+  suite croissante en temps <em>O(n ln(n))</em> là où la programmation
+  dynamique classique donnerait un algo en
+  <em>O(n<sup>2</sup>)</em>.
+</p>
+
+<p>
+Les autres problèmes sont de la génération exhaustive de solution, du
+  backtracking et de la dichotomie sur l'espace des solutions.
+</p>
+
+<?php
+generate(2);
+?>
+
 <?php include 'footer.php'; ?>
