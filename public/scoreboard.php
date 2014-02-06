@@ -1,34 +1,39 @@
 <?php include 'header.php';
 include_once('connectdb.php');
 
+$sql = 'CREATE OR REPLACE VIEW problemtd AS
+  SELECT problem.id, problem.title, problem.url, problem.bonus, td.dueDate
+  FROM problem JOIN td ON (problem.idTD = td.id)';
+if(isset($_GET['td']) && is_numeric($_GET['td']))
+  $sql .= ' WHERE td.id='.$_GET['td'];
+
+$bdd->exec($sql);
+
+$sql = 'CREATE OR REPLACE VIEW submissiontd AS
+SELECT DISTINCT submission.id, submission.idUser, submission.idProblem, submission.date
+FROM problemtd JOIN submission ON (problemtd.id=submission.idProblem)
+WHERE submission.valid';
+$bdd->exec($sql);
+
 $valid = array();
-$res = $bdd->query('SELECT idUser, idProblem, date FROM submission WHERE valid=TRUE');
+$res = $bdd->query('SELECT idUser, idProblem, date FROM submissiontd');
 while($data = $res->fetch())
   $valid[$data['idUser']][$data['idProblem']] = $data['date'];
 
 $users = array();
 $res = $bdd->query(
 'SELECT user.id, user.pseudo
-FROM user LEFT JOIN (SELECT * FROM submission WHERE valid=TRUE) submission ON(user.id=submission.idUser)
+FROM user LEFT JOIN submissiontd ON(user.id=submissiontd.idUser)
 WHERE admin=FALSE
 GROUP BY user.id
-ORDER BY COUNT(submission.id) DESC, MAX(submission.date)
+ORDER BY COUNT(submissiontd.id) DESC, MAX(submissiontd.date)
 '
 );
 while($data = $res->fetch())
   $users[] = $data;
 
 $problems = array();
-$sql = 'SELECT problem.id, problem.title, problem.url, problem.bonus, td.dueDate
-FROM problem JOIN td ON (problem.idTD = td.id)
-';
-
-
-if(isset($_GET['td']) && is_numeric($_GET['td']))
-  $sql .= ' WHERE td.id='.$_GET['td'];
-
-$sql .+ 'ORDER BY td.dueDate, problem.bonus, problem.id';
-
+$sql = 'SELECT * FROM problemtd ORDER BY dueDate, bonus, id';
 $res = $bdd->query($sql);
 while($data = $res->fetch())
   $problems[] = $data;
