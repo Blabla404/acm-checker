@@ -16,7 +16,7 @@ WHERE submission.valid';
 $bdd->exec($sql);
 
 $valid = array();
-$res = $bdd->query('SELECT idUser, idProblem, date FROM submissiontd');
+$res = $bdd->query('SELECT idUser, idProblem, CAST(date AS DATE) as date FROM submissiontd');
 while($data = $res->fetch())
   $valid[$data['idUser']][$data['idProblem']] = $data['date'];
 
@@ -67,7 +67,7 @@ foreach($users as $user){
     if(!isset($valid[$user['id']][$problem['id']]))
       echo("<td class=\"danger\">TODO</td>\n");
     else if($valid[$user['id']][$problem['id']]<=$problem['dueDate'] || $problem['bonus'])
-    echo("<td class=\"success\">DONE</td>\n");
+      echo("<td class=\"success\">DONE</td>\n");
     else
       echo("<td class=\"warning\">LATE</td>\n");
   }
