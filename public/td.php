@@ -59,4 +59,13 @@ Les autres problèmes sont de la génération exhaustive de solution, du
 generate(2);
 ?>
 
+<h1>TD 03</h1>
+<p>
+Aujourd'hui programmation dynamique. Comme d'habitude les bonus sont d'anciens exo du SWERC.
+</p>
+
+<?php
+generate(3);
+?>
+
 <?php include 'footer.php'; ?>
