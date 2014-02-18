@@ -24,9 +24,8 @@ $users = array();
 $res = $bdd->query(
 'SELECT user.id, user.pseudo
 FROM user LEFT JOIN submissiontd ON(user.id=submissiontd.idUser)
-WHERE admin=FALSE
 GROUP BY user.id
-ORDER BY COUNT(submissiontd.id) DESC, MAX(submissiontd.date)
+ORDER BY admin, COUNT(submissiontd.id) DESC, MAX(submissiontd.date)
 '
 );
 while($data = $res->fetch())
