@@ -681,3 +681,91 @@ int main(){
   }while(next_permutation(begin(t), end(t)));
 }
 ~~~
+
+#Fenwick Tree
+
+On veut une structure de donnée simulant un tableau `t` et
+permettant de répondre efficacement aux requêtes suivantes:
+`incremente(i, val)` incremente la case `i` de tableau de la valeur
+`val` (`val` peut être négatif), et `somme(i,j)` calcule la somme _t[i]+t[i+1]+...+t[j]_.
+
+##Algorithme Naif
+
+Deux solutions sont simples, la première consiste à stocker le tableau
+tel quel et faire une boucle pour le calcul de la somme. Nous avons
+alors une complexité en _<O(1), O(n)>_.
+
+Une autre solution qui est l'opposé de celle-ci est de stocker les
+sommes préfixes. C'est à dire, utiliser un tableau `t'` avec
+_t'[i]=t[0]+...t[i]_. Le calcul de somme est alors en temps
+constant (`somme(i,j)=t'[j]-t'[i-1]`) en revanche la mise à jour d'une
+case modifie toutes les cases suivantes. Nous avons alors une
+complexité en $<O(n), O(1)>$.
+
+Dans ces deux cas la complexité en mémoire est linéaire.
+
+##Fenwick Tree
+
+Voyons une solution de complexité _<O(ln(n)), O(ln(n))>_ utilisant
+également un espace mémoire linéaire. Cette structure de donnée
+s'appelle arbre de Fenwick ou Binary Indexed Tree (BIT) suivant les
+pays. Elle est particulièrement courte (20 lignes) à coder (quand on connait
+certaines astuces), elle a donc tout à fait sa place dans un poly d'ACM.
+
+La première remarque est que si l'on sait répondre à la requête
+`somme(0,j)` on sait répondre aux requêtes `somme(i,j)` car
+`somme(i,j)=somme(0,j)-somme(0,i-1)`. Avec la convention que `somme(0,i)` avec
+_i<0_ vaut _0_.
+
+L'idée est d'utiliser la solution des sommes préfixes avec une
+granularité plus fine. Nous allons utiliser un tableau `t'` tel que
+`t'[i]` contient la somme `t[erase(i)]+...+t[i]` où si l'écriture
+binaire de _i_ est _x01...1_ alors l'écriture binaire de
+`erase(i)` est _x00...0_.
+
+Par exemple:
+* `erase(11)=8`
+* `erase(15)=0`
+
+Maintenant le calcul de `somme(0,i)` est simple il s'agit de
+`t'[i]+somme(0,erase(i)-1)`.
+
+Pour effectuer l'opération d'incrément de la case _i=a...f01...1_, il
+faut mettre à jour la case `i` de`t'` et toutes les cases
+_a...f1...1_, _a...e1...1_, etc. qui sont des
+indices valides du tableau `t'`.
+
+Dans les deux cas (si le calcul de l'indice suivant est en temps
+constant), le nombre d'opérations est borné par la taille de l'écriture
+binaire de `i`. Nous avons bien des opérations qui s'effectuent en temps
+_<O(ln(n)), O(ln(n))>_.
+
+Voyons comment calculer `erase(i)`, il faut remplacer le bloc de _1_
+de poids faible par un bloc de _0_. Notons que si _i=x01...1_,
+_i+1=x10...0_. On a alors `erase(i)= i & (i+1)`.
+Pour calculer l'indice suivant dans l'opération
+d'incrément, notons que si _i=x01...1_,
+_next(i)=x11...1_. On peut alors remarquer que
+`next(i)=i | (i+1)`.
+
+~~~
+int somme(int x, int y, const vector<int> & t){
+  if(x==0){
+    int res=0;
+    while(y>=0){
+      res+=t[y];
+      y=(y&(y+1))-1;
+    }
+    return res;
+  }
+  else
+    return somme(0,y,t)-somme(0,x-1,t);
+}
+
+void incremente(int x, int inc, vector<int> & t) {
+  while(x<int(t.size())){
+    t[x]+=inc;
+    x=x|(x+1);
+  }
+}
+~~~
