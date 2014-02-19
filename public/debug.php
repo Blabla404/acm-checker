@@ -2,7 +2,7 @@
 include('header.php');
 include_once('connectdb.php');
 
-echo(file_get_contents('problem.json'));
+//echo(file_get_contents('problem.json'));
 
 
 $res = $bdd->query('SELECT * FROM user');

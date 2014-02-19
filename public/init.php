@@ -24,7 +24,6 @@ $bdd->exec('INSERT INTO problem VALUES ("", "11205", "http://uva.onlinejudge.org
 $bdd->exec('INSERT INTO problem VALUES ("", "524", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=465", 1, 0, 2)');
 $bdd->exec('INSERT INTO problem VALUES ("", "12197", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=276&page=show_problem&problem=3349", 1, 1, 2)');
 $bdd->exec('INSERT INTO problem VALUES ("", "12392", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=280&page=show_problem&problem=3814", 1, 1, 2)');
-$bdd->exec('INSERT INTO problem VALUES ("", "12684", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=822&page=show_problem&problem=4422", 1, 1, 2)');
 
 $bdd->exec('INSERT INTO problem VALUES ("", "357", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=293", 1, 0, 3)');
 $bdd->exec('INSERT INTO problem VALUES ("", "10405", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1346", 1, 0, 3)');
@@ -33,12 +32,16 @@ $bdd->exec('INSERT INTO problem VALUES ("", "10616", "http://uva.onlinejudge.org
 $bdd->exec('INSERT INTO problem VALUES ("", "12182", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=275&page=show_problem&problem=3334", 1, 1, 3)');
 $bdd->exec('INSERT INTO problem VALUES ("", "12200", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=276&page=show_problem&problem=3352", 1, 1, 3)');
 
+$bdd->exec('INSERT INTO problem VALUES ("", "12086", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3238", 1, 0, 4)');
+$bdd->exec('INSERT INTO problem VALUES ("", "12684", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=822&page=show_problem&problem=4422", 1, 0, 4)');
+
 $bdd->exec('DROP TABLE td');
 $bdd->exec('CREATE TABLE td(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255), dueDate DATE)');
 
 $bdd->exec('INSERT INTO td VALUES ("", "TD01", "2014-02-09")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD02", "2014-02-16")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD03", "2014-02-23")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD04", "2014-03-02")');
 
 //$bdd->exec('DROP TABLE submission');
 //$bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATETIME, valid BOOL)');

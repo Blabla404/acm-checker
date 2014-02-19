@@ -68,4 +68,13 @@ Aujourd'hui programmation dynamique. Comme d'habitude les bonus sont d'anciens e
 generate(3);
 ?>
 
+<h1>TD 04</h1>
+<p>
+Aujourd'hui petit TD. Un problème de backtracking et une application directe des arbres de Fenwick. Ceux qui sont en avance peuvent en profiter pour finir les bonus.
+</p>
+
+<?php
+generate(4);
+?>
+
 <?php include 'footer.php'; ?>
