@@ -77,4 +77,13 @@ Aujourd'hui petit TD. Un problème de backtracking et une application directe de
 generate(4);
 ?>
 
+<h1>TD 05</h1>
+<p>
+Aujourd'hui des problèmes mathématiques, exponentiation rapide, pgcd, ppcm, crible...
+</p>
+
+<?php
+generate(5);
+?>
+
 <?php include 'footer.php'; ?>

@@ -693,7 +693,7 @@ permettant de répondre efficacement aux requêtes suivantes:
 
 Deux solutions sont simples, la première consiste à stocker le tableau
 tel quel et faire une boucle pour le calcul de la somme. Nous avons
-alors une complexité en _<O(1), O(n)>_.
+alors une complexité en $<O(1), O(n)>$.
 
 Une autre solution qui est l'opposé de celle-ci est de stocker les
 sommes préfixes. C'est à dire, utiliser un tableau `t'` avec
@@ -706,7 +706,7 @@ Dans ces deux cas la complexité en mémoire est linéaire.
 
 ##Fenwick Tree
 
-Voyons une solution de complexité _<O(ln(n)), O(ln(n))>_ utilisant
+Voyons une solution de complexité $<O(ln(n)), O(ln(n))>$ utilisant
 également un espace mémoire linéaire. Cette structure de donnée
 s'appelle arbre de Fenwick ou Binary Indexed Tree (BIT) suivant les
 pays. Elle est particulièrement courte (20 lignes) à coder (quand on connait
@@ -738,7 +738,7 @@ indices valides du tableau `t'`.
 Dans les deux cas (si le calcul de l'indice suivant est en temps
 constant), le nombre d'opérations est borné par la taille de l'écriture
 binaire de `i`. Nous avons bien des opérations qui s'effectuent en temps
-_<O(ln(n)), O(ln(n))>_.
+$<O(ln(n)), O(ln(n))>$.
 
 Voyons comment calculer `erase(i)`, il faut remplacer le bloc de _1_
 de poids faible par un bloc de _0_. Notons que si _i=x01...1_,
