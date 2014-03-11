@@ -43,7 +43,7 @@ $bdd->exec('INSERT INTO problem VALUES ("", "108", "http://uva.onlinejudge.org/i
 $bdd->exec('INSERT INTO problem VALUES ("", "12546", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=443&page=show_problem&problem=3991", 1, 1, 5)');
 $bdd->exec('INSERT INTO problem VALUES ("", "12185", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=275&page=show_problem&problem=3337", 1, 1, 5)');
 
-
+$bdd->exec('INSERT INTO problem VALUES ("", "42", "", 2, 0, 6)');
 
 $bdd->exec('DROP TABLE td');
 $bdd->exec('CREATE TABLE td(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255), dueDate DATE)');
@@ -53,6 +53,7 @@ $bdd->exec('INSERT INTO td VALUES ("", "TD02", "2014-02-16")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD03", "2014-02-23")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD04", "2014-03-02")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD05", "2014-03-16")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD06", "2014-03-12")');
 
 //$bdd->exec('DROP TABLE submission');
 //$bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATETIME, valid BOOL)');

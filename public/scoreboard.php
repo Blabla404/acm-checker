@@ -2,7 +2,7 @@
 include_once('connectdb.php');
 
 $sql = 'CREATE OR REPLACE VIEW problemtd AS
-  SELECT problem.id, problem.title, problem.url, problem.bonus, td.dueDate
+  SELECT problem.id, problem.title, problem.url, problem.bonus, td.dueDate, problem.idTD
   FROM problem JOIN td ON (problem.idTD = td.id)';
 if(isset($_GET['td']) && is_numeric($_GET['td']))
   $sql .= ' WHERE td.id='.$_GET['td'];
@@ -33,7 +33,7 @@ while($data = $res->fetch())
   $users[] = $data;
 
 $problems = array();
-$sql = 'SELECT * FROM problemtd ORDER BY dueDate, bonus, id';
+$sql = 'SELECT * FROM problemtd ORDER BY idTD, bonus, id';
 $res = $bdd->query($sql);
 while($data = $res->fetch())
   $problems[] = $data;
