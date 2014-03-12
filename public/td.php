@@ -86,4 +86,13 @@ Aujourd'hui des problèmes mathématiques, exponentiation rapide, pgcd, ppcm, cr
 generate(5);
 ?>
 
+<h1>TD 06</h1>
+<p>
+Aujourd'hui des problèmes de chaines de caractères. En particulier, KMP et les tableaux de suffixes.
+</p>
+
+<?php
+generate(6);
+?>
+
 <?php include 'footer.php'; ?>

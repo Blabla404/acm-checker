@@ -769,3 +769,105 @@ void incremente(int x, int inc, vector<int> & t) {
   }
 }
 ~~~
+
+##Suffix Array
+
+###Problème
+
+On cherche à trier lexicographiquement tous les suffixes d'une chaine de
+caractères. On veut également pouvoir rapidement répondre aux requêtes
+demandant le plus grand préfixe commun (LCP) au suffixe commençant à la ième
+lettre et celui commençant à la jème lettre.
+
+Par exemple, le suffixe array (SA) de "bobocel" est:
+
+- bobocel
+- bocel
+- cel
+- el
+- l
+- obocel
+- ocel
+
+
+###Solution naive
+
+On peut créer tous les suffixes de la chaine, il y en a $n$, puis les
+trier. On a alors $Onlg(n)$ comparaison mais attention une comparaison
+de chaines se fait en la longueur de la chaine. On a donc une
+complexité en $O(n^2lg(n))$. On peut simplement répondre aux requêtes
+LCP en $O(n)$.
+
+###Solution en $O(nlg^2(n))$
+
+####Suffix Array
+On va construire la matrice `P` telle que `P[i][j]` contient la
+position lexicographique de la chaine $s_i\ldots s_{i+2^^j}$ parmi
+tous les facteurs de taille $2^j$ de $s$ (Avec la convention qu'un
+facteur qui déborde de la chaine est complété par des
+caractères blancs). Attention, si deux facteurs sont identiques ils
+doivent avoir la même position. On note qu'il y a seulement besoin de
+$O(ln(n))$ lignes dans la matrice (les lignes suivantes étant toujours
+les mêmes). Et que la dernière ligne correspond bien à la position du
+suffixe commençant en $i$ parmi tous les suffixes.
+
+Voyons comment construire ce tableau. La première ligne est la
+position d'une lettre (chaine de taille $1$) parmi l'ensemble des
+lettres. En pratique comme ce qui nous intéresse est l'ordre relatif
+des chaines (i.e. on veut que si $s<t$ alors la position de $s$ soit
+inférieur à la position de $t$) on peut simplement utiliser le numéro
+de la lettre. Par exemple si l'alphabet est les minuscules anglaise,
+la position peut être donnée par `lettre-'a'`.
+
+Voyons maintenant comment construire la ligne $j$ à partir de la ligne
+$j-1$. Il suffit de savoir comparer la position de deux
+chaines de taille $2^j$, ensuite on peut utiliser un tri pour
+connaitre leur position. Or si $s$ et $t$ sont deux chaines de même
+taille, $s<t$ si et seulement si $s$ est plus petite que $t$ sur sa
+première moitié ou ces moitiées sont égales et $s$ est plus petite que
+$t$ sur sa deuxième moitiée.  La position de la chaine commençant en
+$i$ de taille $2^j$ est alors la position (attention toujours au cas
+d'égalité) de $(P[i][j-1], P[i+2^{j-1}][j-1])$ (attention si
+$i+2^{j-1}$ est plus grand que la taille de la chaine on compléte avec
+des blancs et donc $P[i][j-1]=-1$) dans l'ensemble de ces couples.
+
+Pour chaque ligne la complexité est celle de calculer la position
+d'une paire dans un ensemble de $n$ paires et on a $O(ln(n))$ lignes à
+calculer. Si on trie pour calculer la position on a alors un
+algorithme en $O(nln^2(n))$.
+
+Remarque: Vu que l'on trie des couples d'entiers entre $-1$ et $n$ on
+peut en fait les trier en temps linéaire on a alors une complexité en
+$O(nln(n))$. En pratique on peut faire un tri radix stable sur la
+seconde composante de la paire puis sur la première, mais attention en
+pratique le gain est assez faible, et le risque est de faire une
+erreur lors du tri. Il est donc conseillé d'avoir le code dans le
+poly ou simplement d'utiliser sort de la STL.
+
+####Longest common prefix
+Avec cette matrice on peut également répondre rapidement $O(ln(n))$ à
+la question: quel est le plus grand préfixe commun entre le suffixe
+commençant en $i$ et celui commençant en $j$ ?. Et sachant
+répondre à cette question il est facile de répondre à la question de
+connaitre le plus long préfixe entre le ième et le jème suffixe de $s$
+dans l'ordre lexicographique.
+
+L'idée est de regarder les positions des facteurs pour des tailles de
+facteur de plus en plus petite. Si la position pour une taille $k$
+i.e. `P[i][k]==P[j][k]` alors les facteurs sont les mêmes sur les $2^k$
+premiers caractères et on regarde les facteurs commençant en $i+2^k$ et
+$j+2^k$, sinon les facteurs ne sont pas les mêmes sur la taille $2^k$
+mais ils peuvent l'être sur une taille plus petite, on regarde donc
+le facteur commençant en $i$ et celui commençant en $j$ de taille $2^{k-1}$.
+
+####Applications
+L'application la plus classique est, étant donné un ensemble de
+chaines, trouver le plus grand facteur commun à ces chaines. Pour cela
+on calcule le suffix array combiné (par exemple en concatenant avec un
+délimiteur toutes les chaines) de toutes les chaines et on cherche
+pour toute fenêtre contenant un mot de chaque chaine le plus long
+prefixe commun entre le suffixe débutant la fenêtre et celui le
+terminant.
+Par construction c'est un préfixe de l'ensemble des suffixes de la
+fenêtre c'est donc un facteur d'au moins un suffixe par chaine et donc
+c'est un facteur de chaque chaine.
