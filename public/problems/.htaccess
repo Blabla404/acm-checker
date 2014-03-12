@@ -1,1 +1,4 @@
-Deny all
+<Files *.res> 
+Order Allow,Deny 
+Deny from all 
+</Files>
