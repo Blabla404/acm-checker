@@ -1,2 +1,2 @@
-nombre occurences = 2
-nombre occurences = 3
+nombre occurrences = 2
+nombre occurrences = 3

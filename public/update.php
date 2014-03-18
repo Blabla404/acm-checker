@@ -71,13 +71,12 @@ function uvaGet($call){
 	$solved[$problem] = $sub[4];
     }
 
-    $sql = 'INSERT INTO submission VALUES';
+    $sql = 'INSERT IGNORE INTO submission VALUES';
     $sqlValue = array();
     foreach($solved as $problem => $date){
       $sqlValue[] = '("","' . $id2User[$idUVA] . '","' . $problem . '",FROM_UNIXTIME("' . $date . '"), TRUE)';
     }
     if($sqlValue){
-      $bdd->exec('DELETE from submission WHERE idUser = ' . $id2User[$idUVA]);
       $sql .= join(',', $sqlValue);
       $bdd->exec($sql);
     }

@@ -95,4 +95,18 @@ Aujourd'hui des problèmes de chaines de caractères. En particulier, KMP et les
 generate(6);
 ?>
 
+<h1>TD 07</h1>
+<p> Entrainement pour le partiel. Il y a beaucoup d'exercices
+qui sont normalement plus faciles que d'habitude, le but est de tout faire
+pendant la scéance.
+</p>
+
+<p>Les problèmes sont issus du <a
+href="https://code.google.com/codejam/">Google Code Jam</a> et les
+inscriptions ont déjà commencées</p>
+
+<?php
+generate(7);
+?>
+
 <?php include 'footer.php'; ?>

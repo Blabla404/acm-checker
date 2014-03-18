@@ -529,7 +529,7 @@ du tableau `m` en temps logarithmique.
 
 Voici un exemple de code pour ce problème:
 
-~~~
+~~~ cpp
 //Calcule une plus longue sous suite strictement croissante de x
 //et place le resultat dans b.
 //Attention b doit etre un vecteur vide !
@@ -770,9 +770,9 @@ void incremente(int x, int inc, vector<int> & t) {
 }
 ~~~
 
-##Suffix Array
+#Suffix Array
 
-###Problème
+##Problème
 
 On cherche à trier lexicographiquement tous les suffixes d'une chaine de
 caractères. On veut également pouvoir rapidement répondre aux requêtes
@@ -790,7 +790,7 @@ Par exemple, le suffixe array (SA) de "bobocel" est:
 - ocel
 
 
-###Solution naive
+##Solution naive
 
 On peut créer tous les suffixes de la chaine, il y en a $n$, puis les
 trier. On a alors $Onlg(n)$ comparaison mais attention une comparaison
@@ -798,9 +798,9 @@ de chaines se fait en la longueur de la chaine. On a donc une
 complexité en $O(n^2lg(n))$. On peut simplement répondre aux requêtes
 LCP en $O(n)$.
 
-###Solution en $O(nlg^2(n))$
+##Solution en $O(nlg^2(n))$
 
-####Suffix Array
+###Suffix Array
 On va construire la matrice `P` telle que `P[i][j]` contient la
 position lexicographique de la chaine $s_i\ldots s_{i+2^^j}$ parmi
 tous les facteurs de taille $2^j$ de $s$ (Avec la convention qu'un
@@ -844,7 +844,7 @@ pratique le gain est assez faible, et le risque est de faire une
 erreur lors du tri. Il est donc conseillé d'avoir le code dans le
 poly ou simplement d'utiliser sort de la STL.
 
-####Longest common prefix
+###Longest common prefix
 Avec cette matrice on peut également répondre rapidement $O(ln(n))$ à
 la question: quel est le plus grand préfixe commun entre le suffixe
 commençant en $i$ et celui commençant en $j$ ?. Et sachant
@@ -860,7 +860,7 @@ $j+2^k$, sinon les facteurs ne sont pas les mêmes sur la taille $2^k$
 mais ils peuvent l'être sur une taille plus petite, on regarde donc
 le facteur commençant en $i$ et celui commençant en $j$ de taille $2^{k-1}$.
 
-####Applications
+###Applications
 L'application la plus classique est, étant donné un ensemble de
 chaines, trouver le plus grand facteur commun à ces chaines. Pour cela
 on calcule le suffix array combiné (par exemple en concatenant avec un
@@ -871,3 +871,26 @@ terminant.
 Par construction c'est un préfixe de l'ensemble des suffixes de la
 fenêtre c'est donc un facteur d'au moins un suffixe par chaine et donc
 c'est un facteur de chaque chaine.
+
+#Afficher les nombres sur exactement 3 chiffres (en complétant avec des zéros)
+
+Il faut utiliser `setfill` choisir le caractère de remplissage et `setw` pour
+choisir la taille du remplissage. Ces deux fonctions sont dans `iomanip`
+
+~~~ cpp
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main () {
+  cout << setfill ('0') << setw (5);
+  cout << 77 << endl;
+}
+~~~
+
+qui affiche
+
+~~~
+00077
+~~~

@@ -14,12 +14,12 @@ if(isset($_GET['id']) and file_exists('problems/' . $_GET['id'])) {
 			$idProblem = $idProblem[0];
 			$bdd->exec('INSERT INTO submission VALUES("", '. $_SESSION['id'] . ', ' . $idProblem . ', NOW(), TRUE )');
 		echo(	'<div class="alert alert-success">
-				<strong>Congratulation</strong> problem solved !
+				<strong>Congratulations</strong> problem solved!
 				</div>');
 		}
 		else{
 			echo(	'<div class="alert alert-danger">
-					<strong>Failed</strong> try again !
+					<strong>Failed</strong> try again!
 					</div>');
 		}
 	}
@@ -31,10 +31,12 @@ if(isset($_GET['id']) and file_exists('problems/' . $_GET['id'])) {
 	echo('<pre><code>');
 	include('problems/' . $_GET['id'] . '/exemple.in');
 	echo('</pre></code>');
+	echo('<p><a href="problems/'. $_GET['id'] .'/exemple.in" download="problems/' . $_GET['id']. '/exemple.in" target = "_blank">Télécharger l\'entrée</a></p>');
 	echo('<h2>Output</h2>');
 	echo('<pre><code>');
 	include('problems/' . $_GET['id'] . '/exemple.res');
 	echo('</pre></code>');
+	echo('<p><a href="problems/'. $_GET['id'] .'/exemple.res" download="problems/' . $_GET['id']. '/exemple.res" target = "_blank">Télécharger la sortie</a></p>');
 
 
 	if(isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){

@@ -1,4 +1,9 @@
-<Files *.res> 
+<Files testcase.res> 
+Order Allow,Deny 
+Deny from all 
+</Files>
+
+<Files *.cpp> 
 Order Allow,Deny 
 Deny from all 
 </Files>
