@@ -29,9 +29,9 @@ if(isset($_GET['id']) and file_exists('problems/' . $_GET['id'])) {
 	include('problems/' . $_GET['id'] . '/statement.html');
 	echo('<h2>Input</h2>');
 	echo('<pre><code>');
-	include('problems/' . $_GET['id'] . '/exemple.in');
+	include('problems/' . $_GET['id'] . '/exemple.input');
 	echo('</pre></code>');
-	echo('<p><a href="problems/'. $_GET['id'] .'/exemple.in" download="problems/' . $_GET['id']. '/exemple.in" target = "_blank">Télécharger l\'entrée</a></p>');
+	echo('<p><a href="problems/'. $_GET['id'] .'/exemple.input" download="problems/' . $_GET['id']. '/exemple.input" target = "_blank">Télécharger l\'entrée</a></p>');
 	echo('<h2>Output</h2>');
 	echo('<pre><code>');
 	include('problems/' . $_GET['id'] . '/exemple.res');
@@ -40,7 +40,7 @@ if(isset($_GET['id']) and file_exists('problems/' . $_GET['id'])) {
 
 
 	if(isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){
-	echo('<p><a href="problems/'. $_GET['id'] .'/testcase.in" download="problems/' . $_GET['id']. '/testcase.in" target = "_blank">Télécharger le jeu de données</a></p>');
+	echo('<p><a href="problems/'. $_GET['id'] .'/testcase.input" download="problems/' . $_GET['id']. '/testcase.input" target = "_blank">Télécharger le jeu de données</a></p>');
 
 	echo('<form role="form" action="problems.php?id=' . $_GET['id'] . '" method="post" enctype="multipart/form-data">
         <div class="form-group">
