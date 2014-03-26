@@ -1,0 +1,10 @@
+<p>Chaque testcase contient 3 entiers, <code>N</code>, <code>low</code> et <code>high</code> tous les trois compris
+au sens large entre 1 et 100.000 et <code>low</code> est inférieur à <code>high</code>. Le but est de
+compter le nombre de séquences de <code>N</code> entiers compris au sens large entre <code>low</code> et
+<code>high</code> (à ce point il y en a donc <code>(high-low+1)^N)</code> telles que le plus grand
+diviseur commun à la séquence soit 1.</p>
+
+<p>Par exemple pour le testcase: 2 2 4. Il y a 9 séquences: (2,2), (2,3),
+(2,4), (3,2), (3,3), (3,4), (4,2), (4,3), (4,4). Mais seules les séquences (2,3), (3,2), (3,4) et (4,3) vérifient la condition sur le pgcd.</p>
+
+<p>Le résultat pouvant être grand vous devez le calculer modulo 1.000.000.007</p>

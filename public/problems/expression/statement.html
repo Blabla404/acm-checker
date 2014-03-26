@@ -1,0 +1,13 @@
+<p>Le but de votre programme est d'évaluer une expression à plusieurs variables et à coefficients entiers positifs pour une affectation entière positive donnée de ses variables. Chaque testcase consiste en plusieurs lignes. La première ligne contient un entier <code>N</code> compris entre 0 et 26. La ligne suivante est une chaîne de caractères <code>E</code> ne contenant pas d'espaces et représentant une expression mathématique : <code>E</code> contient des entiers positifs (compris entre 0 et 1.000.000.000), des lettres minuscules de l'alphabet latin (qui vont correspondre aux variables), des parenthèses &#40;, &#41; et des opérateurs mathématiques &#43;, &#42;, et &#94;. Le nombre de lettres dans <code>E</code> n'est pas connu d'avance, en revanche le nombre de lettres distinctes dans <code>E</code> est exactement <code>N</code>. Ensuite, suivent <code>N</code> lignes de la "forme a=entier positif" compris entre 0 et 1.000.000.000, où "a" est une variable de <code>E</code>. Attention, <code>E</code> représente une expression mathématique <strong>valide</strong>, les exposants sont des entiers positifs "simples" (ce ne sont pas des expressions arithmétiques composées) et les priorités sont données uniquement par les parenthèses, ("1+2+3" ne peut pas apparaitre dans les testcases)</p>
+
+<p>
+Une grammaire pour générer les expressions pourrait être:
+<pre>
+<code>
+expr -> base | (expr) | (expr+expr) | (expr*expr) | (expr^base)
+base -> [a-z] | entier positif
+</code>
+</pre>
+</p>
+
+<p>Pour chaque testcase votre programme doit afficher le résultat du calcul de <code>E</code> modulo 1.000.000.007 après valuation de ses variables.</p>

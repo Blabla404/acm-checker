@@ -7,7 +7,7 @@ if(isset($_GET['id']) and file_exists('problems/' . $_GET['id'])) {
 	if(isset($_SESSION['id']) AND isset($_SESSION['pseudo']) AND isset($_FILES['out']) AND isset($_FILES['source']) AND $_FILES['out']['error']==0 AND $_FILES['source']['error']==0 AND $_FILES['source']['size'] < 1048576){
 		move_uploaded_file($_FILES['source']['tmp_name'],'soumissions/' . $_GET['id'] . '-' . $_SESSION['pseudo'] . date('-d-M-y-h-i') . '.cpp');
 		
-		if(sha1_file($_FILES['out']['tmp_name']) == sha1_file('problems/'. $_GET['id'] .'/testcase.res')) {
+		if(sha1_file($_FILES['out']['tmp_name']) === sha1_file('problems/'. $_GET['id'] .'/testcase.res')) {
 			$req = $bdd->prepare('SELECT id FROM problem WHERE title = ?');
 			$req->execute(array($_GET['id']));
 			$idProblem = $req->fetch();
