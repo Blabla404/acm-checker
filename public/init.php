@@ -43,21 +43,27 @@ $bdd->exec('INSERT INTO problem VALUES ("", "108", "http://uva.onlinejudge.org/i
 $bdd->exec('INSERT INTO problem VALUES ("", "12546", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=443&page=show_problem&problem=3991", 1, 1, 5)');
 $bdd->exec('INSERT INTO problem VALUES ("", "12185", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=275&page=show_problem&problem=3337", 1, 1, 5)');
 
-$bdd->exec('INSERT INTO problem VALUES ("", "print_42", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=print_42", 2, 0, 6)');
-$bdd->exec('INSERT INTO problem VALUES ("", "kmp", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=kmp", 2, 0, 6)');
-$bdd->exec('INSERT INTO problem VALUES ("", "suffix_array", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=suffix_array", 2, 0, 6)');
+$bdd->exec('INSERT INTO problem VALUES ("", "print_42", "problems.php?id=print_42", 2, 0, 6)');
+$bdd->exec('INSERT INTO problem VALUES ("", "kmp", "problems.php?id=kmp", 2, 0, 6)');
+$bdd->exec('INSERT INTO problem VALUES ("", "suffix_array", "problems.php?id=suffix_array", 2, 0, 6)');
 $bdd->exec('INSERT INTO problem VALUES ("", "11107", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=209&page=show_problem&problem=2048", 1, 1, 6)');
 $bdd->exec('INSERT INTO problem VALUES ("", "164", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=100", 1, 0, 6)');
 $bdd->exec('INSERT INTO problem VALUES ("", "760", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=335&page=show_problem&problem=701", 1, 0, 6)');
 
-$bdd->exec('INSERT INTO problem VALUES ("", "alien_language", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=alien_language", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "all_your_base", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=all_your_base", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "file_fix-it", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=file_fix-it", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "reverse_word", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=reverse_word", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "rope_intranet", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=rope_intranet", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "rotate", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=rotate", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "scalar_product", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=scalar_product", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "store_credit", "http://perso.ens-lyon.fr/theophile.trunck/ACM2014/problems.php?id=store_credit", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "alien_language", "problems.php?id=alien_language", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "all_your_base", "problems.php?id=all_your_base", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "file_fix-it", "problems.php?id=file_fix-it", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "reverse_word", "problems.php?id=reverse_word", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "rope_intranet", "problems.php?id=rope_intranet", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "rotate", "problems.php?id=rotate", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "scalar_product", "problems.php?id=scalar_product", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "store_credit", "problems.php?id=store_credit", 2, 0, 7)');
+
+$bdd->exec('INSERT INTO problem VALUES ("", "expression", "problems.php?id=expression", 2, 0, 8)');
+$bdd->exec('INSERT INTO problem VALUES ("", "n_char", "problems.php?id=n_char", 2, 0, 8)');
+$bdd->exec('INSERT INTO problem VALUES ("", "palindrome", "problems.php?id=palindrome", 2, 0, 8)');
+$bdd->exec('INSERT INTO problem VALUES ("", "prime_set", "problems.php?id=prime_set", 2, 0, 8)');
+$bdd->exec('INSERT INTO problem VALUES ("", "reines", "problems.php?id=reines", 2, 0, 8)');
 
 $bdd->exec('DROP TABLE td');
 $bdd->exec('CREATE TABLE td(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255), dueDate DATE)');
@@ -69,6 +75,7 @@ $bdd->exec('INSERT INTO td VALUES ("", "TD04", "2014-03-02")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD05", "2014-03-16")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD06", "2014-04-02")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD07", "2014-03-19")');
+$bdd->exec('INSERT INTO td VALUES ("", "Partiel", "2014-03-26")');
 
 //$bdd->exec('DROP TABLE submission');
 //$bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATETIME, valid BOOL), UNIQUE (`idUser`, `idProblem`, `valid`)');

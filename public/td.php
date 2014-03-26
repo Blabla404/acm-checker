@@ -98,7 +98,7 @@ generate(6);
 <h1>TD 07</h1>
 <p> Entrainement pour le partiel. Il y a beaucoup d'exercices
 qui sont normalement plus faciles que d'habitude, le but est de tout faire
-pendant la scéance.
+pendant la séance.
 </p>
 
 <p>Les problèmes sont issus du <a
@@ -107,6 +107,24 @@ inscriptions ont déjà commencées</p>
 
 <?php
 generate(7);
+?>
+
+<h1>Partiel</h1>
+<p> Le partiel ! Les problèmes sont triés par nom alphabétique et pas par ordre de difficulté.
+Tous les problèmes valent le même nombre de points. La time limite est de 10 secondes en compilant
+sur les machines de l'école avec clang++ -O2 -std=c++11. 
+</p>
+
+<p>
+À la fin du partiel envoyez-nous tous vos codes par mail en indiquant <strong>explicitement</strong>
+ceux qui ne fonctionnent pas ou qui ne passent pas le time limite. Pour rappel, vous devez nommer
+vos codes avec le nom du problème un tiret puis votre nom|pseudo|login
+par exemple <code>print_42-ttrunck</code>. Il peut y avoir un malus pour ceux ne respectant pas le
+format de rendu.
+</p>
+
+<?php
+generate(8);
 ?>
 
 <?php include 'footer.php'; ?>
