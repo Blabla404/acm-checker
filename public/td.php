@@ -127,4 +127,49 @@ format de rendu.
 generate(8);
 ?>
 
+<h1>TD 09</h1> <p>On va corriger et finir le partiel et le TD07. Pour ceux qui
+ont fini: entraitement aux ACM, par groupe de 3 avec un unique ordinateur,
+essayez de faire le SWERC2007, voici le
+<a href="http://ctp.di.fct.unl.pt/~amd/cpn/2007swerc/official/class.html">
+classement officiel le jour du SWERC  
+</a>.</p>
+
+<?php
+generate(9);
+?>
+
+<h1>TD 10</h1> <p>Des algos de graphes: parcours en largeur (BFS), Dijkstra,
+Prim, recherche de pont (arête disconnectante) et composantes fortement
+connexes</p>
+
+<?php
+generate(10);
+?>
+
+<h1>TD 11</h1> <p>Encore des graphes: Kruskal (qui dans certaines situations
+est bien plus adapté que Prim), Bellman-Ford, Floyd-Warshall et des flots.</p>
+
+<?php
+generate(11);
+?>
+
+<h1>TD 12</h1> <p>Finir les problèmes de graphes. Ceux qui ont tout fait,
+peuvent finir les problèmes du SWERC2007 donnés lors du TD09.</p>
+
+<?php
+generate(12);
+?>
+
+<h1>TD 13</h1>
+
+<?php
+generate(13);
+?>
+
+<h1>TD 14</h1>
+<p>De la géométrie. Pour le dernier exo nous vous conseillions d'aller voir sur cette page <a href="http://fr.wikipedia.org/wiki/Parcours_de_Graham">wikipedia</a> et de poser des questions.</p>
+<?php
+generate(14);
+?>
+
 <?php include 'footer.php'; ?>

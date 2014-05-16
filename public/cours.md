@@ -870,7 +870,7 @@ prefixe commun entre le suffixe débutant la fenêtre et celui le
 terminant.
 Par construction c'est un préfixe de l'ensemble des suffixes de la
 fenêtre c'est donc un facteur d'au moins un suffixe par chaine et donc
-c'est un facteur de chaque chaine.
+un facteur de chaque chaine.
 
 #Afficher les nombres sur exactement 3 chiffres (en complétant avec des zéros)
 
@@ -894,3 +894,33 @@ qui affiche
 ~~~
 00077
 ~~~
+
+#Graphes
+
+Sauf exception (Floyd-Warshall par exemple) il est préférable de stocker le
+graphe sous forme de listes d'adjacences. Attention si vous codez un parcours
+un profondeur récursivement, il y a de forte chance que sur un gros graphe la
+pile d'appel explose provocant une segfault (d'un autre coté certains
+algorithmes sont bien plus simple à écrire récursivement).
+
+##Détection de sommets d'articulation et de ponts dans les graphes non orientés
+
+Un sommet d'articulation est un sommet tel que le supprimer rend le graphe non
+connexe. Un pont est une arête telle que la supprimer rend le graphe non
+connexe. Un algorithme naif, serait de tester pour chaque sommet et chaque
+arête si sa suppression déconnecte le graphe. On a alors un algorithme
+quadratique, voyons comment trouver tous les sommets d'articulation et ponts
+en temps linéaire grâce à un parcours en profondeur (DFS).
+
+Il est plus simple de coder cet algorithme récursivement. Pour chaque sommet
+`u`, on va garder le temps où il a été visité pour la première fois
+`dfs_num[u]` et le plus petit `dfs_num` apparaissant sur un sommet du sous
+arbre de dfs enraciné en `u`, on note cette valeur `dfs_low[u]`. Si on code
+récursivement on peut simplement initialiser `dfs_low[u]=dfs_num[u]`. Puis
+après chaque appel récursif sur un fils (même ceux déjà visité mais par pour
+son père) `v` de `u` faire `dfs_low[u] = min(dfs_low[u], dfs_low[v])`.
+
+Il est facile de voir si un sommet `u` avec un fils `v` vérifie `dfs_low[v] >=
+dfs_num[u]`, alors `u` est un sommet d'articulation. Attention il y a un cas
+spécial pour la racine de l'arbre de dfs. En adaptant la condition, on peut
+facilement savoir si l'arête `uv` est un pont.

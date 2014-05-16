@@ -55,15 +55,47 @@ $bdd->exec('INSERT INTO problem VALUES ("", "all_your_base", "problems.php?id=al
 $bdd->exec('INSERT INTO problem VALUES ("", "file_fix-it", "problems.php?id=file_fix-it", 2, 0, 7)');
 $bdd->exec('INSERT INTO problem VALUES ("", "reverse_word", "problems.php?id=reverse_word", 2, 0, 7)');
 $bdd->exec('INSERT INTO problem VALUES ("", "rope_intranet", "problems.php?id=rope_intranet", 2, 0, 7)');
-$bdd->exec('INSERT INTO problem VALUES ("", "rotate", "problems.php?id=rotate", 2, 0, 7)');
+$bdd->exec('INSERT INTO problem VALUES ("", "rotate", "problems.php?id=rotate", 2, 1, 7)');
 $bdd->exec('INSERT INTO problem VALUES ("", "scalar_product", "problems.php?id=scalar_product", 2, 0, 7)');
 $bdd->exec('INSERT INTO problem VALUES ("", "store_credit", "problems.php?id=store_credit", 2, 0, 7)');
 
 $bdd->exec('INSERT INTO problem VALUES ("", "expression", "problems.php?id=expression", 2, 0, 8)');
 $bdd->exec('INSERT INTO problem VALUES ("", "n_char", "problems.php?id=n_char", 2, 0, 8)');
 $bdd->exec('INSERT INTO problem VALUES ("", "palindrome", "problems.php?id=palindrome", 2, 0, 8)');
-$bdd->exec('INSERT INTO problem VALUES ("", "prime_set", "problems.php?id=prime_set", 2, 0, 8)');
+$bdd->exec('INSERT INTO problem VALUES ("", "prime_set", "problems.php?id=prime_set", 2, 1, 8)');
 $bdd->exec('INSERT INTO problem VALUES ("", "reines", "problems.php?id=reines", 2, 0, 8)');
+
+$bdd->exec('INSERT INTO problem VALUES ("", "1167", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3608", 1, 1, 9)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1168", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3609", 1, 1, 9)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1169", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3610", 1, 1, 9)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1170", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3611", 1, 1, 9)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1171", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3612", 1, 1, 9)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1173", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3614", 1, 1, 9)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1174", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3615", 1, 1, 9)');
+
+
+$bdd->exec('INSERT INTO problem VALUES ("", "10959", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=1900", 1, 0, 10)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1112", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3553", 1, 0, 10)');
+$bdd->exec('INSERT INTO problem VALUES ("", "11631", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=2678", 1, 0, 10)');
+$bdd->exec('INSERT INTO problem VALUES ("", "796", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=737", 1, 0, 10)');
+$bdd->exec('INSERT INTO problem VALUES ("", "11504", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=2499", 1, 0, 10)');
+
+$bdd->exec('INSERT INTO problem VALUES ("", "10369", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=1310", 1, 0, 11)');
+$bdd->exec('INSERT INTO problem VALUES ("", "10557", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=1498", 1, 0, 11)');
+$bdd->exec('INSERT INTO problem VALUES ("", "821", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=762", 1, 0, 11)');
+$bdd->exec('INSERT INTO problem VALUES ("", "820", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=761", 1, 0, 11)');
+
+$bdd->exec('INSERT INTO problem VALUES ("", "12549", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=443&page=show_problem&problem=3994", 1, 0, 12)');
+
+$bdd->exec('INSERT INTO problem VALUES ("", "11389", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=2384", 1, 0, 13)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1172", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3613", 1, 0, 13)');
+$bdd->exec('INSERT INTO problem VALUES ("", "11157", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=2098", 1, 0, 13)');
+$bdd->exec('INSERT INTO problem VALUES ("", "1175", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=274&page=show_problem&problem=3616", 1, 0, 13)');
+
+$bdd->exec('INSERT INTO problem VALUES ("", "378", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=314", 1, 0, 14)');
+$bdd->exec('INSERT INTO problem VALUES ("", "10566", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=1507", 1, 0, 14)');
+$bdd->exec('INSERT INTO problem VALUES ("", "634", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=575", 1, 0, 14)');
+$bdd->exec('INSERT INTO problem VALUES ("", "109", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=45", 1, 0, 14)');
 
 $bdd->exec('DROP TABLE td');
 $bdd->exec('CREATE TABLE td(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255), dueDate DATE)');
@@ -76,10 +108,15 @@ $bdd->exec('INSERT INTO td VALUES ("", "TD05", "2014-03-16")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD06", "2014-04-02")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD07", "2014-03-19")');
 $bdd->exec('INSERT INTO td VALUES ("", "Partiel", "2014-03-26")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD09", "2014-04-13")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD10", "2014-04-20")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD11", "2014-04-27")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD12", "2014-05-04")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD13", "2014-05-18")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD14", "2014-05-25")');
 
 //$bdd->exec('DROP TABLE submission');
 //$bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATETIME, valid BOOL), UNIQUE (`idUser`, `idProblem`, `valid`)');
-
 
 header('Location: index.php');
 ?>
