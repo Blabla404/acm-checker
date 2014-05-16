@@ -47,7 +47,17 @@ if(file_exists('last_update.txt')){
 
 <table class="table table-bordered">
 <tr>
-  <th></th>
+<?php
+$nbProblem = 0;
+$nbBonus = 0;
+foreach($problems as $problem){
+    if($problem['bonus'])
+      $nbBonus += 1;
+    else
+      $nbProblem += 1;
+}
+echo("<th>" . $nbProblem . " problèmes et " . $nbBonus . " bonus</th>");
+?>
   <?php foreach($problems as $problem){
     echo('<th> <a href="'. $problem['url'].'">'. $problem['title'] .'</a><br/>');
     if($problem['bonus'])
@@ -60,8 +70,21 @@ if(file_exists('last_update.txt')){
 
 <?php
 foreach($users as $user){
+  $doneB = 0;
+  $done = 0;
+  foreach($problems as $problem){
+    if(isset($valid[$user['id']][$problem['id']])) {
+      if($problem['bonus'])
+        $doneB += 1;
+      else
+        $done += 1;
+    }
+  }
+
   echo("<tr>\n");
-  echo('<td>'.htmlspecialchars($user['pseudo'])."</td>\n");
+  echo('<td>'.htmlspecialchars($user['pseudo']));
+  echo(" (" . $done . "+". $doneB . ")");
+  echo("</td>\n");
 
   foreach($problems as $problem){
     if(!isset($valid[$user['id']][$problem['id']]))
