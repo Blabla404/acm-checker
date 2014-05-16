@@ -36,7 +36,7 @@ int main(){
 	cin.tie(nullptr);
 	
 	ostringstream ss;
-	for(int i=0;i<10000;++i)
+	for(int i=1;i<10000;++i)
 		ss << i;
 	string s = ss.str();
 
@@ -44,7 +44,7 @@ int main(){
 	while(cin >> n){
 		char res = n_char(n-1);
 		if(n < int(s.size()))
-			assert(res == s[n]);
+			assert(res == s[n-1]);
 		cout << res << '\n';
 	}
 }
