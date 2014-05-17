@@ -30,7 +30,8 @@ ORDER BY COUNT(submissiontd.id) DESC, MAX(submissiontd.date)
 '
 );
 while($data = $res->fetch())
-  $users[] = $data;
+  if(!isset($_GET['user']) || $data['pseudo'] == $_GET['user'])
+    $users[] = $data;
 
 $problems = array();
 $sql = 'SELECT * FROM problemtd ORDER BY idTD, bonus, id';

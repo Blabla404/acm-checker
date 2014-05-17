@@ -54,7 +54,7 @@
 
       <div class="navbar-right">
 	<?php if(isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){ ?>
-	<a href="me.php" class="navbar-link"><?php echo htmlspecialchars($_SESSION['pseudo']); ?></a>
+	<a href="scoreboard.php?user=<?php echo htmlspecialchars($_SESSION['pseudo']);?>" class="navbar-link"><?php echo htmlspecialchars($_SESSION['pseudo']); ?></a>
 	<a href="logout.php"><button type="button" class="btn btn-default navbar-btn">Logout</button></a>
 	<?php } else{?>
 	<a href="signin.php"><button type="button" class="btn btn-default navbar-btn">Sign in</button></a>
