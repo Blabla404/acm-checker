@@ -83,7 +83,8 @@ foreach($users as $user){
   }
 
   echo("<tr>\n");
-  echo('<td>'.htmlspecialchars($user['pseudo']));
+  echo('<td><a href="scoreboard.php?user=' . htmlspecialchars($user['pseudo']) . '">');
+  echo(htmlspecialchars($user['pseudo']) . '</a>');
   echo(" (" . $done . "+". $doneB . ")");
   echo("</td>\n");
 
