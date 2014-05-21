@@ -172,4 +172,10 @@ generate(13);
 generate(14);
 ?>
 
+<h1>TD 15</h1>
+<p>Dernier TD avant l'examen. Les problemes sont ceux de l'examen de l'an dernier moins un probleme deja fait.</p>
+<?php
+generate(15);
+?>
+
 <?php include 'footer.php'; ?>

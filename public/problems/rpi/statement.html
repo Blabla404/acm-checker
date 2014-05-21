@@ -1,0 +1,25 @@
+<p>
+Vous vous demandez quel superhéro est le plus fort. Après de nombreuses soirées télé vous
+avez pu remplir une grille indiquant si le superhéro X s’est déjà battu contre Y et s’il a gagné
+(chaque paire de héro s’est affronté au plus une fois, et personne ne s’affronte lui même). Ce-
+pendant certains héros ne se sont jamais affrontés. Vous décidez d’utiliser la formule du RPI
+utilisée dans les tournois de lycées américains pour calculer un score pour chaque superhéro.
+La formule est la suivante :</p>
+
+<p>
+                       RPI = 0.25 × WP + 0.50 × OWP + 0.25 × OOWP
+</p>
+<p>                                             
+Avec :
+<ul>
+<li> WP le pourcentage de victoire.</li>
+<li> OWP la moyenne du pourcentage de victoire de vos opposants en excluant leur combat
+   contre vous.</li>
+<li> OOWP la moyenne du OWP de vos opposants. Pas de modification ici, c’est exactement le
+   nombre ci-dessus.</li>
+</ul>
+L’entrée commence par un entier n ≤ 100, suivi d’un tableau n × n rempli avec « 0 » à la case
+(i, j) si le héro i a battu le héro j, « 1 » si c’est le héro j qui a battu le héro i et « . » s’ils ne se sont
+jamais rencontrés. Notez que si (i, j) contient 1 alors ( j, i ) contient 0. Pour chaque testcase vous
+devez afficher n lignes contenant le RPI de chaque superhéro à 10−3 près.
+</p>

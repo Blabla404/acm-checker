@@ -97,6 +97,12 @@ $bdd->exec('INSERT INTO problem VALUES ("", "10566", "http://uva.onlinejudge.org
 $bdd->exec('INSERT INTO problem VALUES ("", "634", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=575", 1, 0, 14)');
 $bdd->exec('INSERT INTO problem VALUES ("", "109", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=45", 1, 0, 14)');
 
+$bdd->exec('INSERT INTO problem VALUES ("", "velo", "problems.php?id=velo", 2, 0, 15)');
+$bdd->exec('INSERT INTO problem VALUES ("", "carmichael", "problems.php?id=carmichael", 2, 0, 15)');
+$bdd->exec('INSERT INTO problem VALUES ("", "coloring", "problems.php?id=coloring", 2, 0, 15)');
+$bdd->exec('INSERT INTO problem VALUES ("", "11646", "http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=2693", 1, 0, 15)');
+$bdd->exec('INSERT INTO problem VALUES ("", "rpi", "problems.php?id=rpi", 2, 0, 15)');
+
 $bdd->exec('DROP TABLE td');
 $bdd->exec('CREATE TABLE td(id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255), dueDate DATE)');
 
@@ -114,6 +120,7 @@ $bdd->exec('INSERT INTO td VALUES ("", "TD11", "2014-04-27")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD12", "2014-05-04")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD13", "2014-05-18")');
 $bdd->exec('INSERT INTO td VALUES ("", "TD14", "2014-05-25")');
+$bdd->exec('INSERT INTO td VALUES ("", "TD15", "2014-05-25")');
 
 //$bdd->exec('DROP TABLE submission');
 //$bdd->exec('CREATE TABLE submission(id INT AUTO_INCREMENT PRIMARY KEY,idUser INTEGER, idProblem INTEGER, date DATETIME, valid BOOL), UNIQUE (`idUser`, `idProblem`, `valid`)');
