@@ -1,0 +1,12 @@
+<p>Vous vous intéressez à la propagation d'un virus sur des populations de bactéries. On considère un environnement constitué d'une grille carrée où chaque case est occupée par une bactérie d'un certain type représenté par un entier. Il existe deux souches du virus que vous étudiez : alpha et béta. Les deux souches sont capables de se propager d'un individu infecté à un individu voisin du même type. La souche alpha est également capable de se propager à un individu voisin d'un autre type qui est alors infecté par la souche béta, moins infectieuse. Chaque bactérie a 4 voisins (haut, bas, droite, gauche) (sauf si elle est au bord de la grille).</p>
+
+<p>Étant donné une grille carrée et les coordonnées d'une bactérie infectée par la souche alpha, vous devez calculer combien de bactéries vont être infectées au total.</p>
+
+<h3>INPUT</h3>
+<p>La première ligne contient le nombre de test cases. Chaque test case est précédé d'une ligne vide. Chaque test case commence par une ligne contenant <code>n</code>, la taille de la grille (le coté du carré), et <code>c</code>, le nombre de types de bactéries. La seconde ligne de chaque test case contient les coordonnées de la première bactérie infectée. Suivent ensuite les <code>n</code> lignes de <code>n</code> entiers qui constituent la grille.</p>
+
+<h3>ORDRES DE GRANDEUR</h3>
+<p><code>0 &lt n &lt 100</code> et <code>0 &lt c &lt 15</code></p>
+
+<h3>OUTPUT</h3>
+<p>Pour chaque test case, vous devez renvoyer une ligne contenant le nombre de bactéries infectées.</p>

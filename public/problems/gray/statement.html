@@ -1,0 +1,34 @@
+<p>Le code de Gray est un codage binaire tel que pour passer d'un entier au suivant on ne change qu'un seul bit. Voici les codes de Gray des entiers de 0 à 15:</p>
+
+<p>0 -> 0<br/>
+1 -> 1<br/>
+2 -> 11<br/>
+3 -> 10<br/>
+4 -> 110<br/>
+5 -> 111<br/>
+6 -> 101<br/>
+7 -> 100<br/>
+8 -> 1100<br/>
+9 -> 1101<br/>
+10 -> 1111<br/>
+11 -> 1110<br/>
+12 -> 1010<br/>
+13 -> 1011<br/>
+14 -> 1001<br/>
+15 -> 1000<p/>
+
+<p>Il existe de nombreuses méthodes pour calculer le code de Gray, en voici une:
+<ul>
+<li> le code de Gray de 0 est 0 ;</li>
+<li> si n est pair, on prend le code de Gray de n-1 et on inverse le bit immédiatement à gauche du bit à 1 le plus à droite ;</li>
+<li> si n est impair, on prend le code de Gray de n-1 et on inverse le dernier bit.</li>
+</ul>
+</p>
+
+<p>Votre objectif est, étant donné un entier en décimal, de calculer le code de Gray correspondant.</p>
+
+<h3>INPUT</h3>
+<p>La première ligne contient le nombre de test cases. Chaque test case est constitué d'une ligne contenant un unique entier (&lt10000) en décimal.</p>
+
+<h3>OUTPUT</h3>
+<p>Pour chaque test case vous devez renvoyer une ligne contenant le code de Gray correspondant. Le chiffre le plus à gauche doit être un 1.</p>

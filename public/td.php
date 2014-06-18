@@ -178,4 +178,22 @@ generate(14);
 generate(15);
 ?>
 
+<h1>Examen</h1>
+<p> L'examen ! Les problèmes sont triés par nom alphabétique et pas par ordre de difficulté.
+Tous les problèmes valent le même nombre de points. La time limite est de 10 secondes en compilant
+sur les machines de l'école avec <code>clang++ -O2 -std=c++11</code>. 
+</p>
+
+<p>
+À la fin du partiel envoyez-nous tous vos codes par mail en indiquant <strong>explicitement</strong>
+ceux qui ne fonctionnent pas ou qui ne passent pas le time limite. Pour rappel, vous devez nommer
+vos codes avec le nom du problème un tiret puis votre nom|pseudo|login
+par exemple <code>print_42-ttrunck</code>. Il peut y avoir un malus pour ceux ne respectant pas le
+format de rendu.
+</p>
+
+<?php
+generate(16);
+?>
+
 <?php include 'footer.php'; ?>

@@ -1,0 +1,18 @@
+<p>Vous êtes sismologue. Afin d'étudier l'impact des séismes, vous devez en déclencher un en utilisant de la dynamite. Un tel séisme ne blessera personne mais va provoquer des dégâts matériels. Afin que vos expériences soient acceptées par la société, vous devez rembourser les dégâts provoqués par votre séisme.</p>
+
+<p>Vous avez accès à un site, situé à une profondeur p, où vous pouvez placer une charge pour déclencher votre tremblement de terre. On assimile la surface de la Terre à un plan. Soit x la masse de dynamite utilisée, le rayon <code>r</code> du tremblement de terre vaut <code>r=cbrt(x)</code> (racine cubique). Tous les points en surface situés dans le rayon du tremblement de terre sont affectés. L'intensité du séisme sur l'échelle de Richter vaut <code>I=log10(x)</code>. Les dégâts <code>d</code> provoqués dépendent de la surface affectée et de l'intensité: <code>d=S*I</code></p>
+
+<p>Vous disposez d'une somme a d'argent qui peut servir à acheter de la dynamite ou à rembourser des dégâts matériels. Votre objectif est de maximiser la quantité de dynamite achetée tout en gardant assez d'argent pour pouvoir rembourser les dégâts, ie, trouver le plus grand <code>x</code> tel que <code>x+d&lt=a</code>.</p>
+
+<h3>REMARQUES</h3>
+<p>Pour calculer la racine cubique, vous pouvez utiliser la fonction pow du module cmath avec une puissance flottante (elle existe aussi directement en C++11 dans cmath).
+Le résultat flottant est attendu avec un chiffre après la virgule (en arrondissant au plus près). Les test cases sont conçus de telle façon que tous les résultats réels sont à une distance au plus 0.025 d'un multiple de 0.1 (afin d'éviter les problèmes d'arrondi).</p>
+
+<h3>INPUT</h3>
+<p>La première ligne contient le nombre de test cases. Chaque test case est constitué d'une ligne comportant deux flottants. Le premier est a, la somme d'argent disponible, le second est p, la profondeur du site pour l'explosion.</p>
+
+<h3>ORDRES DE GRANDEUR</h3>
+<p><code>0 &lt a &lt 100000</code> et <code>0 &lt p &lt 500</code></p>
+
+<h3>OUTPUT</h3>
+<p>Pour chaque test case, vous devez renvoyer une ligne contenant un unique flottant : la quantité d'argent à dépenser en dynamite.</p>
